@@ -31,112 +31,11 @@ function VerifyContact() {
     const getSubmit =(e)=>{
         e.preventDefault()
         if(contact!=="" && otp!=="" && name!==""){
-            window.location.href="/EmailVerify"
+            window.location.href="/PanEmailVerify"
             // return
         }
     }
-    const fetchData = async (e) => {
-        e.preventDefault()
-//   var cors = new EnableCorsAttribute("*", "*", "*");
-//     config.EnableCors(cors);
-// headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-// headers.append('Access-Control-Allow-Credentials', 'true');
-// let headers = new Headers();
-
-//   headers.append('Content-Type', 'application/json');
-//   headers.append('Accept', 'application/json');
-
-//   headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-//   headers.append('Access-Control-Allow-Credentials', 'true');
-
-//   headers.append('GET', 'POST', 'OPTIONS');
-
-//   headers.append('Authorization', 'Basic ' + base64.encode("AIY3H1XS5APT2EMFE54UWZ56IQ8FPKFP:GO75FW2YAZ6KQM3F1ZSGQVUQCZPXD6OF"));
-
-
-    //   var authOptions = {
-    //     method: 'POST',
-    //     url: 'https://ext.digio.in:444/v3/client/kyc/pan/verify',
-    //     data: ({"pan_no" : "HOCPK1290F",
-    //         "full_name" : "Shanawaz Umar khan",
-    //           "date_of_birth" : "1998-08-27"}),
-    //     headers: ({
-    //         'Access-Control-Allow-Origin': '*',
-    //       'Content-Type': 'application/json',
-    //       'authorization': 'AIY3H1XS5APT2EMFE54UWZ56IQ8FPKFP:GO75FW2YAZ6KQM3F1ZSGQVUQCZPXD6OF',
-    //       "authorization":  "Basic  Base64encodedValueOf(AIY3H1XS5APT2EMFE54UWZ56IQ8FPKFP:GO75FW2YAZ6KQM3F1ZSGQVUQCZPXD6OF)"
-    //      }),
-    //     json: true
-    //    };
-    // axios(authOptions)
-    //    .then((response) => {
-    //        console.log(response);
-    //        })
-    //    .catch((error) => {
-    //     alert(error)
-    //      })
-  // Simple POST request with a JSON body using fetch
-
-  var auth = 'Basic ' + Buffer.from("AIY3H1XS5APT2EMFE54UWZ56IQ8FPKFP" + ':' + "GO75FW2YAZ6KQM3F1ZSGQVUQCZPXD6OF").toString('base64');
-  var dataToPost = ({
-         "pan_no" : "HOCPK1290F",
-        "full_name" : "Shanawaz Umar khan",
-              "date_of_birth" : "1998-08-27"
-       });
-
-       let axiosConfiguration = {
-         headers: {
-             
-        // "authorization" :"Basic  Base64encodedValueOf(AIY3H1XS5APT2EMFE54UWZ56IQ8FPKFP:GO75FW2YAZ6KQM3F1ZSGQVUQCZPXD6OF)",
-        "authorization":auth,
-        'content-Type': 'application/json',
-   // "authorization":  "Basic  Base64encodedValueOf(AIY3H1XS5APT2EMFE54UWZ56IQ8FPKFP:GO75FW2YAZ6KQM3F1ZSGQVUQCZPXD6OF)"
-  // "authorization":  'Basic ' + Base64encodedValueOf(AIY3H1XS5APT2EMFE54UWZ56IQ8FPKFP:GO75FW2YAZ6KQM3F1ZSGQVUQCZPXD6OF),
-         }
-       };
-
-       axios.post('https://ext.digio.in:444/v3/client/kyc/pan/verify', dataToPost, axiosConfiguration)
-       .then((res) => {
-         console.log("Response: ", res);
-       })
-       .catch((err) => {
-         console.log("error: ", err);
-       })
-
-
-
-//   var auth = 'Basic ' + Buffer.from("AIY3H1XS5APT2EMFE54UWZ56IQ8FPKFP" + ':' + "GO75FW2YAZ6KQM3F1ZSGQVUQCZPXD6OF").toString('base64');
-//   const requestOptions = {
-//     method: 'POST',
-//     mode: 'cors',
-//     headers: { 'Access-Control-Allow-Origin': '*','content-Type': 'application/json', 
-//     "authorization":  auth
-// },
-//     body: JSON.stringify({ "pan_no" : "HOCPK1290F",
-//          "full_name" : "Shanawaz Umar khan",
-//                "date_of_birth" : "1998-08-27" })
-// };
-// fetch('https://ext.digio.in:444/v3/client/kyc/pan/verify', requestOptions)
-//     .then(response => response.json())
-//     .then(data => console.log(data));
-
-
-        // try {
-        //     e.preventDefault()
-        //     const response = await fetch('https://ext.digio.in:444/v3/client/kyc/pan/verify',  {
-        //      method: 'POST',
-        //      headers: {'authorization': 'AIY3H1XS5APT2EMFE54UWZ56IQ8FPKFP:GO75FW2YAZ6KQM3F1ZSGQVUQCZPXD6OF'},
-        //      body: JSON.stringify({ "pan_no" : "HOCKP1290F",
-        //      "full_name" : "Shanawaz Umar khan",
-        //      "date_of_birth" : "1998-08-27" })
-         
-        //      });
-        //      const data = await response.json();
-        //      console.log(data);
-        //    } catch(error) {
-        //       console.log(error)
-        //      } 
-        }
+  
 
     return (
         <>

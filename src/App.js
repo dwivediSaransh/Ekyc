@@ -4,11 +4,11 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import VerifyContact from "./components/verifyContact";
-import EmailVerify   from "./components/EmailVerify";
+import PanEmailVerify   from "./components/PanEmailVerify";
 import VerifyPin from "./components/verifyPin";
 import SignUp from "./components/signupComponent";
 import AllowAccess from "./components/allowAccess";
-
+import EmailTemplate from "./components/EmailTemplate"
 function App() {
   return (<Router>
     <div className="App">
@@ -33,7 +33,8 @@ function App() {
             <Route path="/verifyContact" component={VerifyContact} />
             <Route path="/verifyPin" component={VerifyPin} />
             <Route path="/AllowAccess" component={AllowAccess} />
-            <Route path="/EmailVerify" component={EmailVerify} />
+            <Route path="/PanEmailVerify" component={PanEmailVerify} />
+            <Route path="/EmailTemplate" component={EmailTemplate} />
           </Switch>
         </div>
       </Router>
