@@ -58,7 +58,7 @@ const bankVerify = async (e)=>{
         .post('http://localhost:3001/bank', bankdetails)
         .then(data => {
             console.log(data)
-            data.data.message ? alert("failed") : (window.location.href="/EmailTemplate")
+            data.data.message ? alert("failed") : (window.location.href="/PanOrc")
         } )
         .catch(err => {
           console.error(err);

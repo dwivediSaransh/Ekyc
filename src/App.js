@@ -9,6 +9,7 @@ import VerifyPin from "./components/verifyPin";
 import SignUp from "./components/signupComponent";
 import AllowAccess from "./components/allowAccess";
 import EmailTemplate from "./components/EmailTemplate"
+import PanOrc from "./components/panOrc"
 function App() {
   return (<Router>
     <div className="App">
@@ -35,6 +36,7 @@ function App() {
             <Route path="/AllowAccess" component={AllowAccess} />
             <Route path="/PanEmailVerify" component={PanEmailVerify} />
             <Route path="/EmailTemplate" component={EmailTemplate} />
+            <Route path="/PanOrc" component={PanOrc} />
           </Switch>
         </div>
       </Router>

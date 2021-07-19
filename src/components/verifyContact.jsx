@@ -27,11 +27,11 @@ function VerifyContact() {
             // return
         }
     }
-
+    
     const getSubmit =(e)=>{
         e.preventDefault()
         if(contact!=="" && otp!=="" && name!==""){
-            window.location.href="/PanEmailVerify"
+            window.location.href="/EmailTemplate"
             // return
         }
     }

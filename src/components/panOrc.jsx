@@ -1,32 +1,35 @@
 import React,{useState,useEffect} from 'react'
-import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
-import emailjs from 'emailjs-com';
-import * as EmailValidator from 'email-validator';
-// import $ from "jquery"
-// import "./verifyContact.css"
+import axios from 'axios';
+import FileBase64 from 'react-file-base64';
 
-function EmailTemplate() {
-    const [email, setEmail] = useState('');
+function PanOrc() {
+    const [panImg, setpanImg] = useState('');
+    const getFiles =(files)=>{
+        setpanImg(files.base64)
+        // console.log(files.base64)
+    }
     const getSubmit =(e)=>{
         e.preventDefault()
-       if(EmailValidator.validate(email)){
-           alert("Valid Email")
-           window.location.href="/PanEmailVerify"
-       }
-           else{
-alert("Invalid Email")
-       }
+    //  console.log(panImg)
+        const panImgdata ={
+            front_part : panImg
+        }
+      axios.post('http://localhost:3001/panocr',panImgdata)
+      .then(data=>{console.log(data)})
+      .catch(err=>{
+          console.log("ERROR",err)
+      })
     }
     return (
         <>
       <div className="auth-wrapper">
         <div className="auth-inner">
             <form>
-                <h3>Verify Email</h3>
+                <h3>PAN OCR</h3>
                 <div className="form-group">
                     {/* <label>Enter Contact</label> */}
-                    <TextField type="text" value={email} onChange={(e)=>setEmail(e.target.value)} className="form-control"  label="Enter Email" />
+                    <FileBase64 type="file" value={panImg} onDone={getFiles}   label="Enter Email" />
                     {/* <input type="text" value={contact} onChange={(e)=>setContact(e.target.value)} className="form-control" placeholder="Enter Contact" /> */}
                 </div>
             <div className="btn-class-submit">
@@ -40,4 +43,4 @@ alert("Invalid Email")
         </>
     )
 }
-export default EmailTemplate
+export default PanOrc
