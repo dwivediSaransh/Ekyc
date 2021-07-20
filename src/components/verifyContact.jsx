@@ -4,11 +4,25 @@ import TextField from '@material-ui/core/TextField';
 import $ from "jquery"
 import "./verifyContact.css"
 import axios from "axios"
+
+const initialValues={
+    fname:"",
+    fotp:'',
+    fcontact:''
+}
+
 function VerifyContact() {
+
     const [contact, setContact] = useState('');
     const [otp, setOtp] = useState('');
     const [name, setName] = useState('');
  
+    const [inputs, setInputs] = useState({});
+
+
+    const handleChange = e => setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }));
+
+    
    useEffect(() => {
     // loadDataOnlyOnce();
        $(".div-otp").hide()
@@ -45,7 +59,7 @@ function VerifyContact() {
                 <h3>Verify Contact</h3>
                 <div className="form-group">
                     {/* <label>Enter Contact</label> */}
-                    <TextField value={name} onChange={(e)=>setName(e.target.value)} className="form-control"  label="Enter Name" />
+                    <TextField name="fname" value={inputs.fname} onChange={handleChange} className="form-control"  label="Enter Name" />
                     {/* <input type="text" value={contact} onChange={(e)=>setContact(e.target.value)} className="form-control" placeholder="Enter Contact" /> */}
                 </div>
                 <div className="form-group">
