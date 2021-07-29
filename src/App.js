@@ -11,6 +11,8 @@ import AllowAccess from "./components/allowAccess";
 import EmailTemplate from "./components/EmailTemplate";
 import PanOrc from "./components/panOrc";
 import ProtectedPages from "./components/ProtectedPage/ProtectedPages";
+import ConfirmPage from './components/confirmPage/ConfirmPage'
+import Razor from "./components/RazorPay/Razor"
 function App() {
   const userEnd = () => {
     localStorage.clear();
@@ -48,8 +50,10 @@ function App() {
           {/* <Route path="/verifyContact" component={VerifyContact} /> */}
           <Route path="/verifyPin" component={VerifyPin} />
           <Route path="/AllowAccess" component={AllowAccess} />
+          <Route path="/ConfirmPage" component={ConfirmPage} />
           <Route path="/PanEmailVerify" component={PanEmailVerify} />
           <Route path="/EmailTemplate" component={EmailTemplate} />
+          <Route path="/RazorPay" component={Razor} />
           <ProtectedPages path="/PanOrc" Cmp={PanOrc} />
         </Switch>
       </div>
