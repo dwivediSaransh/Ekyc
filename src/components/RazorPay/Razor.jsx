@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import logo from "./logo.svg";
 // import './App.css'
-
+import SERVER_ID from "../../configure";
 function loadScript(src) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
@@ -31,7 +31,7 @@ function Razor() {
       return;
     }
 
-    const data = await fetch("http://localhost:3001/razor", {
+    const data = await fetch(SERVER_ID + "/razor", {
       method: "POST",
     }).then((t) => t.json());
 
