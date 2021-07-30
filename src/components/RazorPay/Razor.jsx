@@ -64,16 +64,14 @@ function Razor() {
     <div className="App">
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <p>RAZOR PAY EXAMPLE</p>
         <a
           className="App-link"
           onClick={displayRazorpay}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Donate $5
+          CREDIT 4 Rs.
         </a>
       </header>
     </div>
