@@ -33,7 +33,7 @@ const ConfirmPage = () => {
     setPopup(false);
   };
   return (
-    <>
+    <div>
       <Backdrop className={classes.backdrop} open={open}>
         <CircularProgress color="inherit" />
       </Backdrop>
@@ -44,7 +44,7 @@ const ConfirmPage = () => {
         // text="SweetAlert in React"
         onConfirm={handleClick}
       />
-    </>
+    </div>
   );
 };
 

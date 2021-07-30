@@ -5,6 +5,7 @@ import emailjs from "emailjs-com";
 import $ from "jquery";
 import * as EmailValidator from "email-validator";
 import axios from "axios";
+import SERVER_ID from "../configure";
 // import $ from "jquery"
 // import "./verifyContact.css"
 
@@ -32,7 +33,7 @@ function EmailTemplate() {
         user_token: localStorage.getItem("user-token"),
       };
       await axios
-        .post("http://localhost:3001/email", smsDetail)
+        .post(SERVER_ID + "/email", smsDetail)
         .then((data) => {
           console.log(data);
         })
@@ -54,7 +55,7 @@ function EmailTemplate() {
     }
   };
   return (
-    <>
+    <div>
       <div className="auth-wrapper">
         <div className="auth-inner">
           <form>
@@ -101,7 +102,7 @@ function EmailTemplate() {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 export default EmailTemplate;

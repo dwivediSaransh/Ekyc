@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import $ from "jquery";
 import "./verifyContact.css";
 import axios from "axios";
+import SERVER_ID from "../configure";
 function VerifyContact() {
   const [contact, setContact] = useState("");
   const [otp, setOtp] = useState("");
@@ -52,7 +53,7 @@ function VerifyContact() {
         genOtp: val,
       };
       await axios
-        .post("http://localhost:3001/sms", smsDetail)
+        .post(SERVER_ID + "/sms", smsDetail)
         .then((data) => {
           setToken(data);
         })
@@ -92,7 +93,7 @@ function VerifyContact() {
   });
 
   return (
-    <>
+    <div>
       <div className="auth-wrapper">
         <div className="auth-inner">
           <form>
@@ -169,7 +170,7 @@ function VerifyContact() {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 export default VerifyContact;

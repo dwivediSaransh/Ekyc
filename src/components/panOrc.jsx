@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import FileBase64 from "react-file-base64";
-
+import SERVER_ID from "../configure";
 function PanOrc() {
   const [panImg, setpanImg] = useState("");
   const [backendData, setbackendData] = useState("");
@@ -17,7 +17,7 @@ function PanOrc() {
       front_part: panImg,
     };
     axios
-      .post("http://localhost:3001/panocr", panImgdata)
+      .post(SERVER_ID + "/panocr", panImgdata)
       .then((data) => {
         data && setbackendData(JSON.parse(data.data.body));
         console.log(data);
@@ -33,7 +33,7 @@ function PanOrc() {
   // }, [backendData]);
 
   return (
-    <>
+    <div>
       <div className="auth-wrapper">
         <div className="auth-inner">
           <form>
@@ -60,7 +60,7 @@ function PanOrc() {
             </div>
             <br />
             {backendData ? (
-              <>
+              <div>
                 <img
                   // width="200" height="200"
                   src={`data:image/png;base64,${backendData.encoded_image}`}
@@ -72,7 +72,7 @@ function PanOrc() {
                   //  height="200"
                   src={`data:image/png;base64,${backendData.encoded_signature}`}
                 />
-              </>
+              </div>
             ) : (
               ""
             )}
@@ -81,7 +81,7 @@ function PanOrc() {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 export default PanOrc;

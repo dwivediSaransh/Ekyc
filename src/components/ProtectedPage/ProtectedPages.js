@@ -9,9 +9,9 @@ function ProtectedPages(props) {
   //   }
   // }, []);
   return (
-    <>
+    <div>
       <Cmp />
-    </>
+    </div>
   );
 }
 
