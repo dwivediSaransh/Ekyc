@@ -18,6 +18,7 @@ function PanEmailVerify() {
   const [bank, setbank] = useState("");
   const [ifsc, setifsc] = useState("");
   const [submitB, setSubmitB] = useState("Verify PAN");
+  const [apiURL, setApiURL] = useState("/api/Notify/PanAPITest");
   useEffect(() => {
     // loadDataOnlyOnce();
     $(".div-otp").hide();
@@ -38,7 +39,7 @@ function PanEmailVerify() {
       };
 
       await axios
-        .post(SERVER_ID + "/create", book)
+        .post(SERVER_ID + apiURL, book)
         .then((data) => {
           console.log(data);
           data.data.message
