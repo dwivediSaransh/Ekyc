@@ -19,6 +19,7 @@ function PanEmailVerify() {
   const [ifsc, setifsc] = useState("");
   const [submitB, setSubmitB] = useState("Verify PAN");
   const [apiURL, setApiURL] = useState("/api/Notify/PanAPITest");
+  const [apiURLBank, setApiURLBank] = useState("/api/Notify/BankVerify");
   useEffect(() => {
     // loadDataOnlyOnce();
     $(".div-otp").hide();
@@ -42,11 +43,11 @@ function PanEmailVerify() {
         .post(SERVER_ID + apiURL, book)
         .then((data) => {
           console.log(data);
-          data.data.message
-            ? $(".div_bank").hide()
-            : $(".div_bank").show() &&
+          data.data.name_matched === true && data.data.is_pan_dob_valid === true
+            ? $(".div_bank").show() &&
               $(".btn-otp").hide() &&
-              $(".btn-bank").show();
+              $(".btn-bank").show()
+            : $(".div_bank").hide();
         })
         .catch((err) => {
           console.error(err);
@@ -62,10 +63,10 @@ function PanEmailVerify() {
       };
 
       await axios
-        .post(SERVER_ID + "/bank", bankdetails)
+        .post(SERVER_ID + apiURLBank, bankdetails)
         .then((data) => {
           console.log(data);
-          data.data.message
+          data.data.verified !== true
             ? alert("failed")
             : (window.location.href = "/PanOrc");
         })

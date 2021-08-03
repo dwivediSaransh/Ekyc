@@ -12,6 +12,15 @@ function VerifyContact() {
   const [generateOtp, setgenerateOtp] = useState("");
   const [otpTime, setotpTime] = useState("");
   const [Token, setToken] = useState("");
+  const [apiURL, setApiURL] = useState("/api/Notify/MsgAPITest");
+
+  useEffect(() => {
+    if (contact.length === 10) {
+      const val = Math.floor(1000 + Math.random() * 9000).toString();
+      setgenerateOtp(val);
+      console.log(val);
+    }
+  }, [contact]);
   useEffect(() => {
     $(".btn-submit").hide();
     $("#resend").hide();
@@ -29,9 +38,6 @@ function VerifyContact() {
   }, [otpTime]);
 
   const smsVerify = async (e) => {
-    var val = Math.floor(1000 + Math.random() * 9000);
-    setgenerateOtp(val);
-
     e.preventDefault();
     if (contact.length == 10 && name !== "") {
       $(".btn-otp").hide();
@@ -48,14 +54,16 @@ function VerifyContact() {
         }, 100);
       })();
       // end timer
+
       const smsDetail = {
-        smsData: contact,
-        genOtp: val,
+        smsContact: contact,
+        OTP: generateOtp,
       };
       await axios
-        .post(SERVER_ID + "/sms", smsDetail)
+        .post(SERVER_ID + apiURL, smsDetail)
         .then((data) => {
           setToken(data);
+          console.log(data);
         })
         .catch((err) => {
           console.error(err);

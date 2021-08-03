@@ -13,7 +13,7 @@ function EmailTemplate() {
   const [email, setEmail] = useState("");
   const [genOtp, setgenOtp] = useState("");
   const [otp, setOtp] = useState("");
-
+  const [apiURL, setApiURL] = useState("/api/Notify/EmailAPITest");
   useEffect(() => {
     $(".btn-verify").hide();
   }, []);
@@ -33,7 +33,7 @@ function EmailTemplate() {
         user_token: localStorage.getItem("user-token"),
       };
       await axios
-        .post(SERVER_ID + "/email", smsDetail)
+        .post(SERVER_ID + apiURL, smsDetail)
         .then((data) => {
           console.log(data);
         })

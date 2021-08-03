@@ -11,8 +11,9 @@ import AllowAccess from "./components/allowAccess";
 import EmailTemplate from "./components/EmailTemplate";
 import PanOrc from "./components/panOrc";
 import ProtectedPages from "./components/ProtectedPage/ProtectedPages";
-import ConfirmPage from './components/confirmPage/ConfirmPage'
-import Razor from "./components/RazorPay/Razor"
+import ConfirmPage from "./components/confirmPage/ConfirmPage";
+import Razor from "./components/RazorPay/Razor";
+// import DigiLock from './components/DigiLock/DigiLock'
 function App() {
   const userEnd = () => {
     localStorage.clear();
@@ -54,6 +55,7 @@ function App() {
           <Route path="/PanEmailVerify" component={PanEmailVerify} />
           <Route path="/EmailTemplate" component={EmailTemplate} />
           <Route path="/RazorPay" component={Razor} />
+          {/* <Route path="/DigiLock" component={DigiLock} /> */}
           <ProtectedPages path="/PanOrc" Cmp={PanOrc} />
         </Switch>
       </div>
