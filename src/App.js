@@ -13,7 +13,7 @@ import PanOrc from "./components/panOrc";
 import ProtectedPages from "./components/ProtectedPage/ProtectedPages";
 import ConfirmPage from "./components/confirmPage/ConfirmPage";
 import Razor from "./components/RazorPay/Razor";
-// import DigiLock from './components/DigiLock/DigiLock'
+import DigiLock from "./components/DigiLock/DigiLock";
 function App() {
   const userEnd = () => {
     localStorage.clear();
@@ -32,13 +32,10 @@ function App() {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" onClick={userEnd}>
+                  <p className="nav-link" onClick={userEnd}>
                     LOGOUT
-                  </Link>
+                  </p>
                 </li>
-                {/* <li className="nav-item">
-                <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
-              </li> */}
               </ul>
             </div>
           </div>
@@ -55,7 +52,7 @@ function App() {
           <Route path="/PanEmailVerify" component={PanEmailVerify} />
           <Route path="/EmailTemplate" component={EmailTemplate} />
           <Route path="/RazorPay" component={Razor} />
-          {/* <Route path="/DigiLock" component={DigiLock} /> */}
+          <Route path="/DigiLock" component={DigiLock} />
           <ProtectedPages path="/PanOrc" Cmp={PanOrc} />
         </Switch>
       </div>

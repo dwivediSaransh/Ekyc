@@ -155,7 +155,7 @@ function VerifyContact() {
                 style={{ textAlign: "center" }}
                 onClick={smsVerify}
               >
-                Resend via <Link> sms.</Link>
+                Resend via <Link to=""> sms.</Link>
               </p>
               {/* <p id="counter" style={{textAlign: "center"}}></p> */}
             </div>

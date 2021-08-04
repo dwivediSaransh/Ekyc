@@ -24,7 +24,7 @@ function DigiLock() {
       },
     };
 
-    var digio = new Digio(options); //options is the digio options constructor object.
+    var digio = new window.Digio(options); //options is the digio options constructor object.
     digio.init();
     digio.submit(
       "KID210726181933188DRUZ34XQLJL9O8",
@@ -36,14 +36,14 @@ function DigiLock() {
     <div className="App">
       <header className="App-header">
         <Script url="https://app.digio.in/sdk/v9/digio.js" />
-        <p>RAZOR PAY EXAMPLE</p>
+        <p>SDK INTEGRATION</p>
         <a
           className="App-link"
           onClick={abc}
           target="_blank"
           rel="noopener noreferrer"
         >
-          CREDIT 4 Rs.
+          Auth via SDK
         </a>
       </header>
     </div>
