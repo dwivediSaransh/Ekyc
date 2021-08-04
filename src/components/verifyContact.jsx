@@ -12,7 +12,10 @@ function VerifyContact() {
   const [generateOtp, setgenerateOtp] = useState("");
   const [otpTime, setotpTime] = useState("");
   const [Token, setToken] = useState("");
-  const [apiURL, setApiURL] = useState("/api/Notify/MsgAPITest");
+  const [apiURL, setApiURL] = useState("/api/Notify/smsAPI");
+  const [apiURLJwt, setApiURLJwt] = useState("/api/Notify/JWTWebToken");
+  const [apiURLverify, setApiURLverify] = useState("/api/Notify/VerifyNumber");
+  const [Status, setStatus] = useState("true");
 
   useEffect(() => {
     if (contact.length === 10) {
@@ -62,6 +65,15 @@ function VerifyContact() {
       await axios
         .post(SERVER_ID + apiURL, smsDetail)
         .then((data) => {
+          // setToken(data);
+          console.log(data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+      await axios
+        .post(SERVER_ID + apiURLJwt, smsDetail)
+        .then((data) => {
           setToken(data);
           console.log(data);
         })
@@ -70,11 +82,26 @@ function VerifyContact() {
         });
     }
   };
-  const getSubmit = (e) => {
+  const getSubmit = async (e) => {
     e.preventDefault();
+    // setStatus("true");
+    const verifyDetail = {
+      smsContact: contact,
+      flag: Status,
+    };
     if (otp == generateOtp) {
-      localStorage.setItem("user-token", Token.data);
-      window.location.href = "/EmailTemplate";
+      await axios
+        .post(SERVER_ID + apiURLverify, verifyDetail)
+        .then((data) => {
+          setToken(data);
+          console.log(data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+
+      // localStorage.setItem("user-token", Token.data);
+      // window.location.href = "/EmailTemplate";
     } else {
       alert("wrong OTP");
     }

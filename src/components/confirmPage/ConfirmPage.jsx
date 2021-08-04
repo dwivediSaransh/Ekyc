@@ -21,11 +21,12 @@ const ConfirmPage = () => {
   console.log(user_id[2]);
   useEffect(() => {
     {
-      user_id[2] === localStorage.getItem("user-token") &&
-        setTimeout(() => {
-          setOpen(false);
-          setPopup(true);
-        }, 3000);
+      user_id[2] === localStorage.getItem("user-token")
+        ? setTimeout(() => {
+            setOpen(false);
+            setPopup(true);
+          }, 3000)
+        : (window.location.href = "/");
     }
   }, []);
   const handleClick = () => {

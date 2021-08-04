@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import logo from "./logo.svg";
 // import './App.css'
 import SERVER_ID from "../../configure";
@@ -20,7 +20,10 @@ const __DEV__ = document.domain === "localhost";
 
 function Razor() {
   const [name, setName] = useState("Mehul");
-
+  const [apiURL, setApiURL] = useState("/api/Notify/RazorPayIntegrated");
+  useEffect(() => {
+    console.log(SERVER_ID);
+  }, []);
   async function displayRazorpay() {
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
@@ -31,7 +34,7 @@ function Razor() {
       return;
     }
 
-    const data = await fetch(SERVER_ID + "/razor", {
+    const data = await fetch(SERVER_ID + apiURL, {
       method: "POST",
     }).then((t) => t.json());
 
@@ -40,8 +43,8 @@ function Razor() {
     const options = {
       key: __DEV__ ? "rzp_test_dojmbldJSpz91g" : "PRODUCTION_KEY",
       currency: data.currency,
-      amount: data.amount.toString(),
-      order_id: data.id,
+      amount: data.amount,
+      // order_id: data.id,
       name: "Donation",
       description: "Thank you for nothing. Please give us some money",
       //   image: "http://localhost:1337/logo.svg",
@@ -52,7 +55,7 @@ function Razor() {
       },
       prefill: {
         name,
-        email: "sdfdsjfh2@ndsfdf.com",
+        email: "saransh@gmail.com",
         phone_number: "9899999999",
       },
     };
@@ -71,7 +74,7 @@ function Razor() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          CREDIT 4 Rs.
+          Donate 500 Rs.
         </a>
       </header>
     </div>
