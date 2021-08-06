@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useScript from "../../CustomHooks/customHook";
+import useScript from "../../CustomHooks/LoadScript";
 import Script from "react-load-script";
 
 function DigiLock() {

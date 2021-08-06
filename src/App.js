@@ -14,6 +14,7 @@ import ProtectedPages from "./components/ProtectedPage/ProtectedPages";
 import ConfirmPage from "./components/confirmPage/ConfirmPage";
 import Razor from "./components/RazorPay/Razor";
 import DigiLock from "./components/DigiLock/DigiLock";
+import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
 function App() {
   const userEnd = () => {
     localStorage.clear();
@@ -53,6 +54,7 @@ function App() {
           <Route path="/EmailTemplate" component={EmailTemplate} />
           <Route path="/RazorPay" component={Razor} />
           <Route path="/DigiLock" component={DigiLock} />
+          <Route path="/PersonalInfo" component={PersonalInfo} />
           <ProtectedPages path="/PanOrc" Cmp={PanOrc} />
         </Switch>
       </div>

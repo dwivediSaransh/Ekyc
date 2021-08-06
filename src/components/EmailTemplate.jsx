@@ -71,16 +71,16 @@ function EmailTemplate() {
               />
               {/* <input type="text" value={contact} onChange={(e)=>setContact(e.target.value)} className="form-control" placeholder="Enter Contact" /> */}
             </div>
-            <div className="form-group div-otp">
-              {/* <label>OTP</label> */}
-              <TextField
+            {/* <div className="form-group div-otp"> */}
+            {/* <label>OTP</label> */}
+            {/* <TextField
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 className="form-control"
                 label="Enter OTP"
-              />
-              {/* <input type="text" value={otp} onChange={(e)=>setOtp(e.target.value)} className="form-control" placeholder="Enter password" /> */}
-            </div>
+              /> */}
+            {/* <input type="text" value={otp} onChange={(e)=>setOtp(e.target.value)} className="form-control" placeholder="Enter password" /> */}
+            {/* </div> */}
 
             <div className="btn-class-submit">
               {/* <button type="submit" onClick={getContact} className="btn btn-primary btn-block btn-otp">GET OTP</button> */}

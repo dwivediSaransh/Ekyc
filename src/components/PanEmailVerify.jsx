@@ -68,7 +68,7 @@ function PanEmailVerify() {
           console.log(data);
           data.data.verified !== true
             ? alert("failed")
-            : (window.location.href = "/PanOrc");
+            : (window.location.href = "/PersonalInfo");
         })
         .catch((err) => {
           console.error(err);

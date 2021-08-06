@@ -5,6 +5,7 @@ import $ from "jquery";
 import "./verifyContact.css";
 import axios from "axios";
 import SERVER_ID from "../configure";
+import { useLocalStorage } from "../CustomHooks/useLocalStorage";
 function VerifyContact() {
   const [contact, setContact] = useState("");
   const [otp, setOtp] = useState("");
@@ -16,7 +17,7 @@ function VerifyContact() {
   const [apiURLJwt, setApiURLJwt] = useState("/api/Notify/JWTWebToken");
   const [apiURLverify, setApiURLverify] = useState("/api/Notify/VerifyNumber");
   const [Status, setStatus] = useState("true");
-
+  const [userToken, setUserToken] = useLocalStorage("user-token", "");
   useEffect(() => {
     if (contact.length === 10) {
       const val = Math.floor(1000 + Math.random() * 9000).toString();
@@ -100,8 +101,8 @@ function VerifyContact() {
           console.error(err);
         });
 
-      // localStorage.setItem("user-token", Token.data);
-      // window.location.href = "/EmailTemplate";
+      setUserToken(Token.data);
+      window.location.href = "/EmailTemplate";
     } else {
       alert("wrong OTP");
     }
