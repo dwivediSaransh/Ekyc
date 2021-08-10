@@ -6,6 +6,8 @@ import "./verifyContact.css";
 import axios from "axios";
 import SERVER_ID from "../configure";
 import { useLocalStorage } from "../CustomHooks/useLocalStorage";
+import { conVal, namVal } from "../Helper/Helper";
+
 function VerifyContact() {
   const [contact, setContact] = useState("");
   const [otp, setOtp] = useState("");
@@ -18,13 +20,44 @@ function VerifyContact() {
   const [apiURLverify, setApiURLverify] = useState("/api/Notify/VerifyNumber");
   const [Status, setStatus] = useState("true");
   const [userToken, setUserToken] = useLocalStorage("user-token", "");
+  const [errorMsg, seterrorMsg] = useState({
+    errorOBJ: {
+      errorOTP: "",
+    },
+  });
+  // useEffect(() => {
+  //   if (contact.length === 10) {
+  //     const val = Math.floor(1000 + Math.random() * 9000).toString();
+  //     setgenerateOtp(val);
+  //     console.log(val);
+  //   }
+  // }, [contact]);
+  // useEffect for OTP comparision
   useEffect(() => {
-    if (contact.length === 10) {
-      const val = Math.floor(1000 + Math.random() * 9000).toString();
-      setgenerateOtp(val);
-      console.log(val);
+    if (otp.length === 4) {
+      if (otp === generateOtp) {
+        getSubmit();
+      } else {
+        seterrorMsg((prevState) => ({
+          ...prevState,
+          errorOBJ: {
+            ...prevState.errorOBJ,
+            errorOTP: "WRONG OTP!",
+          },
+        }));
+      }
     }
-  }, [contact]);
+    if (otp.length <= 3) {
+      seterrorMsg((prevState) => ({
+        ...prevState,
+        errorOBJ: {
+          ...prevState.errorOBJ,
+          errorOTP: "",
+        },
+      }));
+    }
+  }, [otp]);
+
   useEffect(() => {
     $(".btn-submit").hide();
     $("#resend").hide();
@@ -41,6 +74,16 @@ function VerifyContact() {
     }
   }, [otpTime]);
 
+  const handleChange = (e) => {
+    e.preventDefault();
+    conVal();
+    setContact(e.target.value);
+  };
+  const handleNameChange = (e) => {
+    namVal();
+    let cData = e.target.value.toUpperCase();
+    setName(cData);
+  };
   const smsVerify = async (e) => {
     e.preventDefault();
     if (contact.length == 10 && name !== "") {
@@ -66,8 +109,10 @@ function VerifyContact() {
       await axios
         .post(SERVER_ID + apiURL, smsDetail)
         .then((data) => {
-          // setToken(data);
           console.log(data);
+          {
+            data.data.jsonotpBKC && setgenerateOtp(data.data.jsonotpBKC);
+          }
         })
         .catch((err) => {
           console.error(err);
@@ -84,49 +129,24 @@ function VerifyContact() {
     }
   };
   const getSubmit = async (e) => {
-    e.preventDefault();
-    // setStatus("true");
+    // e.preventDefault();
     const verifyDetail = {
       smsContact: contact,
       flag: Status,
     };
-    if (otp == generateOtp) {
-      await axios
-        .post(SERVER_ID + apiURLverify, verifyDetail)
-        .then((data) => {
-          setToken(data);
-          console.log(data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+    await axios
+      .post(SERVER_ID + apiURLverify, verifyDetail)
+      .then((data) => {
+        setToken(data);
+        console.log(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
 
-      setUserToken(Token.data);
-      window.location.href = "/EmailTemplate";
-    } else {
-      alert("wrong OTP");
-    }
+    setUserToken(Token.data);
+    window.location.href = "/EmailTemplate";
   };
-
-  // validate number
-
-  $("#fieldSelectorId").keypress(function (e) {
-    var length = $(this).val().length;
-    if (length > 9) {
-      return false;
-    } else if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-      return false;
-    } else if (length == 0 && e.which == 48) {
-      return false;
-    }
-  });
-
-  $("#fieldSelectorname").keypress(function (e) {
-    var length = $(this).val().length;
-    if (length > 25) {
-      return false;
-    }
-  });
 
   return (
     <div>
@@ -140,10 +160,7 @@ function VerifyContact() {
                 type="text"
                 value={name}
                 id="fieldSelectorname"
-                onChange={(e) => {
-                  let cData = e.target.value.toUpperCase();
-                  setName(cData);
-                }}
+                onChange={handleNameChange}
                 className="form-control"
                 label="Enter Name"
               />
@@ -153,10 +170,10 @@ function VerifyContact() {
               {/* <label>Enter Contact</label> */}
               <TextField
                 type="number"
-                id="fieldSelectorId"
+                id="fieldSelectorNo"
                 pattern="[1-9]{1}[0-9]{9}"
                 value={contact}
-                onChange={(e) => setContact(e.target.value)}
+                onChange={handleChange}
                 className="form-control"
                 label="Enter Contact"
               />
@@ -173,7 +190,9 @@ function VerifyContact() {
               />
               {/* <input type="text" value={otp} onChange={(e)=>setOtp(e.target.value)} className="form-control" placeholder="Enter password" /> */}
             </div>
-
+            {errorMsg.errorOBJ.errorOTP && (
+              <p className="text-error">{errorMsg.errorOBJ.errorOTP}</p>
+            )}
             <div className="form-group otp-time">
               <p id="countdown" style={{ textAlign: "center" }}>
                 Resend Link in {otpTime} sec.
@@ -195,13 +214,13 @@ function VerifyContact() {
               >
                 GET OTP
               </button>
-              <button
+              {/* <button
                 type="submit"
                 onClick={getSubmit}
                 className="btn btn-primary btn-block btn-submit"
               >
                 Submit
-              </button>
+              </button> */}
             </div>
           </form>
         </div>

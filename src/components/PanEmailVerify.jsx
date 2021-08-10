@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import $ from "jquery";
 import axios from "axios";
 import SERVER_ID from "../configure";
-import panVerify from "./index";
+// import panVerify from "./index";
 import { Alert } from "bootstrap";
 // import "./verifyContact.css"
 
