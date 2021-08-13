@@ -19,4 +19,23 @@ function namVal() {
     }
   });
 }
-export { conVal, namVal };
+//geolocation function
+function getLocation() {
+  // get the current position
+  navigator.geolocation.getCurrentPosition(onSuccess, onError);
+}
+// handle success case
+function onSuccess(position) {
+  const { latitude, longitude } = position.coords;
+
+  console.log("success");
+  console.log`Your location: (${latitude},${longitude})`;
+}
+
+// handle error case
+function onError() {
+  console.log("error");
+  console.log`Failed to get your location!`;
+}
+
+export { conVal, namVal, getLocation };
