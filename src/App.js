@@ -2,7 +2,6 @@ import React from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import VerifyContact from "./components/verifyContact";
 import PanEmailVerify from "./components/PanEmailVerify";
 import VerifyPin from "./components/verifyPin";
@@ -15,38 +14,16 @@ import ConfirmPage from "./components/confirmPage/ConfirmPage";
 import Razor from "./components/RazorPay/Razor";
 import DigiLock from "./components/DigiLock/DigiLock";
 import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
+import DashBoard from "./components/DashBoard/DashBoard";
 function App() {
-  const userEnd = () => {
-    localStorage.clear();
-    sessionStorage.clear();
-    window.location.href = "/";
-    console.log("hello logout");
-  };
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-          <div className="container">
-            <a className="navbar-brand" href={"/"}>
-              E-KYC
-            </a>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <p className="nav-link" onClick={userEnd}>
-                    LOGOUT
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-
         <Switch>
           {localStorage.getItem("user-token") === null && (
-            <Route exact path="/" component={VerifyContact} />
+            <Route exact path="/verifyContact" component={VerifyContact} />
           )}
-          {/* <Route path="/verifyContact" component={VerifyContact} /> */}
+          <Route path="/" component={DashBoard} />
           <Route path="/verifyPin" component={VerifyPin} />
           <Route path="/AllowAccess" component={AllowAccess} />
           <Route path="/ConfirmPage" component={ConfirmPage} />
@@ -55,6 +32,7 @@ function App() {
           <Route path="/RazorPay" component={Razor} />
           <Route path="/DigiLock" component={DigiLock} />
           <Route path="/PersonalInfo" component={PersonalInfo} />
+          <Route path="/DashBoard" component={DashBoard} />
           <ProtectedPages path="/PanOrc" Cmp={PanOrc} />
         </Switch>
       </div>

@@ -6,18 +6,21 @@ import SERVER_ID from "../configure";
 function PanOrc() {
   const [panImg, setpanImg] = useState("");
   const [backendData, setbackendData] = useState("");
-  const getFiles = (files) => {
-    setpanImg(files.base64);
-    // console.log(files.base64)
+  const [apiURL, setApiURL] = useState("/api/user/login/OCR");
+  const getFiles = (e) => {
+    setpanImg(e.target.files[0]);
+    console.log(e.target.files[0])
   };
   const getSubmit = (e) => {
     e.preventDefault();
-    //  console.log(panImg)
+    const formData = new FormData();
+    formData.append("file", panImg);
+
     const panImgdata = {
-      front_part: panImg,
+      front_part: formData,
     };
     axios
-      .post(SERVER_ID + "/panocr", panImgdata)
+      .post(SERVER_ID + apiURL, panImgdata)
       .then((data) => {
         data && setbackendData(JSON.parse(data.data.body));
         console.log(data);
@@ -40,11 +43,12 @@ function PanOrc() {
             <h3>PAN OCR</h3>
             <div className="form-group">
               {/* <label>Enter Contact</label> */}
-              <FileBase64
+              <input
                 type="file"
-                value={panImg}
-                onDone={getFiles}
-                label="Enter Email"
+                // name="file"
+                // value={panImg}
+                onChange={(e) => getFiles(e)}
+                // label="Enter Email"
               />
               {/* <input type="text" value={contact} onChange={(e)=>setContact(e.target.value)} className="form-control" placeholder="Enter Contact" /> */}
             </div>

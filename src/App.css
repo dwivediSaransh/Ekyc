@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: sans-serif;
 }
 
 .App-logo {
@@ -39,4 +40,16 @@ input[type="number"] {
   font-size: 14px;
   text-align: center;
   color: red;
+}
+.color-gradiant {
+  background-image: linear-gradient(to right, #7f00ff, #e100ff);
+}
+.text-white {
+  color: white !important;
+}
+.text-purple {
+  color: #6344f2;
+}
+.btn-radius {
+  border-radius: 10px;
 }

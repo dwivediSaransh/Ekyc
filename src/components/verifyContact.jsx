@@ -7,7 +7,7 @@ import axios from "axios";
 import SERVER_ID from "../configure";
 import { useLocalStorage } from "../CustomHooks/useLocalStorage";
 import { conVal, namVal } from "../Helper/Helper";
-
+import Header from "./Header/Header";
 function VerifyContact() {
   const [contact, setContact] = useState("");
   const [otp, setOtp] = useState("");
@@ -150,6 +150,7 @@ function VerifyContact() {
 
   return (
     <div>
+      <Header />
       <div className="auth-wrapper">
         <div className="auth-inner">
           <form>
