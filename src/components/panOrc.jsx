@@ -9,20 +9,26 @@ function PanOrc() {
   const [apiURL, setApiURL] = useState("/api/user/login/OCR");
   const getFiles = (e) => {
     setpanImg(e.target.files[0]);
-    console.log(e.target.files[0])
+    // console.log(e.target.files[0]);
   };
+
+  // onFileUpload = () => {};
+
   const getSubmit = (e) => {
     e.preventDefault();
+    // Create an object of formData
     const formData = new FormData();
-    formData.append("file", panImg);
 
-    const panImgdata = {
-      front_part: formData,
-    };
+    // Update the formData object
+    formData.append("front_part", panImg);
+
+    // Details of the uploaded file
+    console.log(formData);
+
     axios
-      .post(SERVER_ID + apiURL, panImgdata)
+      .post(SERVER_ID + apiURL, formData)
       .then((data) => {
-        data && setbackendData(JSON.parse(data.data.body));
+        data && setbackendData(data.data);
         console.log(data);
       })
       .catch((err) => {

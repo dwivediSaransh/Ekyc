@@ -7,7 +7,7 @@ import axios from "axios";
 import SERVER_ID from "../configure";
 import { useLocalStorage } from "../CustomHooks/useLocalStorage";
 import { conVal, namVal } from "../Helper/Helper";
-import Header from "./Header/Header";
+// import Header from "./Header/Header";
 function VerifyContact() {
   const [contact, setContact] = useState("");
   const [otp, setOtp] = useState("");
@@ -98,7 +98,7 @@ function VerifyContact() {
         setTimeout(function () {
           setotpTime(i);
           timer();
-        }, 100);
+        }, 1000);
       })();
       // end timer
 
@@ -150,7 +150,7 @@ function VerifyContact() {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <div className="auth-wrapper">
         <div className="auth-inner">
           <form>
@@ -164,6 +164,7 @@ function VerifyContact() {
                 onChange={handleNameChange}
                 className="form-control"
                 label="Enter Name"
+                autoComplete="off"
               />
               {/* <input type="text" value={contact} onChange={(e)=>setContact(e.target.value)} className="form-control" placeholder="Enter Contact" /> */}
             </div>

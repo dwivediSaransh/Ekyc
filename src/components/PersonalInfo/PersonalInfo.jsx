@@ -21,6 +21,7 @@ const PersonalInfo = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
+    window.location = "/PanOrc";
     // console.log(state);
   };
   return (
@@ -85,7 +86,11 @@ const PersonalInfo = () => {
             />
             <br />
             <br />
-            <button className="btn btn-primary" onClick={handleSubmit}>
+            <button
+              // onClick={handleClick}
+              className="btn btn-primary"
+              onClick={handleSubmit}
+            >
               Submit
             </button>
           </form>

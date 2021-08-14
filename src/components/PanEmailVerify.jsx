@@ -116,6 +116,7 @@ function PanEmailVerify() {
             <div className="form-group">
               {/* <label>Enter Contact</label> */}
               <TextField
+                autoComplete="off"
                 type="text"
                 value={name}
                 onChange={(e) => {
@@ -186,9 +187,9 @@ function PanEmailVerify() {
               {/* <a href="https://services.digitallocker.gov.in/savelocker/api/1/savelocker.js" type="submit" className="btn btn-primary btn-block">Connect to Digilocker</a> */}
               {/* <button type="submit" onClick={fetchData} className="btn btn-primary btn-block">Fetch API</button> */}
             </div>
-            <p className="forgot-password text-right">
+            {/* <p className="forgot-password text-right">
               Email <Link to="/EmailTemplate">verify?</Link>
-            </p>
+            </p> */}
           </form>
         </div>
       </div>

@@ -21,7 +21,7 @@ function EmailTemplate() {
     e.preventDefault();
     var val = Math.floor(1000 + Math.random() * 9000);
     if (EmailValidator.validate(email)) {
-      alert("Valid Email");
+      // alert("Valid Email");
       $(".btn-verify").show();
       $(".btn-submit").hide();
       setgenOtp(val);

@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../Header/Header";
+// import Header from "../Header/Header";
 const DashBoard = () => {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <img className="img-fluid" src={require("../../assets/landing.png")} />
       <br />
-      <button className="color-gradiant btn-radius text-white border-0">
+      <button className="color-gradiant text-white border-0 btn-comman">
         Sign up now
       </button>
       <div className="container mt-5">
@@ -106,7 +106,11 @@ const DashBoard = () => {
         trades.
       </p>
       <br />
-      <button className="color-gradiant btn-radius text-white border-0">Sign up now</button>
+      <button className="color-gradiant text-white border-0 btn-comman">
+        Sign up now
+      </button>
+      <br />
+      <br />
       <br />
     </div>
   );

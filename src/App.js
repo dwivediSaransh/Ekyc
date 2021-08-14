@@ -15,24 +15,29 @@ import Razor from "./components/RazorPay/Razor";
 import DigiLock from "./components/DigiLock/DigiLock";
 import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
 import DashBoard from "./components/DashBoard/DashBoard";
+import VideoRecord from "./components/VideoRecord/VideoRecord";
+import Header from "./components/Header/Header";
 function App() {
   return (
     <Router>
       <div className="App">
+        <Header />
         <Switch>
-          {localStorage.getItem("user-token") === null && (
+          {/* {localStorage.getItem("user-token") === null && (
             <Route exact path="/verifyContact" component={VerifyContact} />
-          )}
-          <Route path="/" component={DashBoard} />
-          <Route path="/verifyPin" component={VerifyPin} />
-          <Route path="/AllowAccess" component={AllowAccess} />
+          )} */}
+          <Route exact path="/" component={DashBoard} />
+          <Route exact path="/verifyPin" component={VerifyPin} />
+          <Route exact path="/AllowAccess" component={AllowAccess} />
           <Route path="/ConfirmPage" component={ConfirmPage} />
-          <Route path="/PanEmailVerify" component={PanEmailVerify} />
-          <Route path="/EmailTemplate" component={EmailTemplate} />
-          <Route path="/RazorPay" component={Razor} />
-          <Route path="/DigiLock" component={DigiLock} />
-          <Route path="/PersonalInfo" component={PersonalInfo} />
-          <Route path="/DashBoard" component={DashBoard} />
+          <Route exact path="/PanEmailVerify" component={PanEmailVerify} />
+          <Route exact path="/EmailTemplate" component={EmailTemplate} />
+          <Route exact path="/RazorPay" component={Razor} />
+          <Route exact path="/DigiLock" component={DigiLock} />
+          <Route exact path="/PersonalInfo" component={PersonalInfo} />
+          <Route exact path="/DashBoard" component={DashBoard} />
+          <Route exact path="/VideoRecord" component={VideoRecord} />
+          <Route exact path="/VerifyContact" component={VerifyContact} />
           <ProtectedPages path="/PanOrc" Cmp={PanOrc} />
         </Switch>
       </div>

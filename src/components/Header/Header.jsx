@@ -1,5 +1,5 @@
 import React from "react";
-// import { browserHistory } from "react-router";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import "./Header.css";
 const Header = () => {
@@ -16,9 +16,9 @@ const Header = () => {
       <nav className="navbar navbar-expand-lg color-gradiant navbar-light">
         <br />
         <br />
-        <a className="navbar-brand ml-5 text-white" href="#">
+        <Link to="/" className="navbar-brand ml-5 text-white" href="#">
           Nuniyo
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -34,9 +34,13 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto mr-5">
             <li className="nav-item active">
-              <a className="nav-link text-white" href="#">
+              <Link
+                to="/VerifyContact"
+                className="nav-link text-white"
+                href="#"
+              >
                 Signup <span className="sr-only">(current)</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link text-white" href="#">
